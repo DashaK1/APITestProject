@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "d637bd01-937c-4c20-a176-288fda9c484e",
+		"name": "JobCafeProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20648165"
+	},
+	"item": [
+		{
+			"name": "Positive Tests",
+			"item": [
+				{
+					"name": "Get Location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Location text test\", function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"Toronto, ON, Canada\");\r",
+									"});\r",
+									"pm.test(\"Position test\",function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"Data Scientist\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?location=toronto&position=Data Scientist",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "toronto"
+								},
+								{
+									"key": "position",
+									"value": "Data Scientist"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Position",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Position text test\", function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"QA\");\r",
+									"});\r",
+									"pm.test(\"Position and location test\", function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"Israel\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?position=QA&location=Israel",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "position",
+									"value": "QA"
+								},
+								{
+									"key": "location",
+									"value": "Israel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Company text test\", function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"Apple\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?company=Apple",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "New York",
+									"disabled": true
+								},
+								{
+									"key": "company",
+									"value": "Apple"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Date text test\", function(){\r",
+									"pm.expect(pm.response.text()).to.include(\"2022-06-07\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?date=2022-06-07",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-06-07"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative Tests",
+			"item": [
+				{
+					"name": "Get Position invalid position",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?position=hfgnhgmhg",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "position",
+									"value": "hfgnhgmhg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Location invalid location name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?location=jhkhgjhg",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "jhkhgjhg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company invalid company name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code test\", function(){\r",
+									"pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{job_url}}?company=456628",
+							"host": [
+								"{{job_url}}"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "456628"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
